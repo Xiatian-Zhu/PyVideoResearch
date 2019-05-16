@@ -24,7 +24,7 @@ args = [
     '--dataset', 'something_something_webm',
     '--arch', 'aj_i3d',
     '--lr', '0.375',
-    '--lr-decay-rate', '40',
+    '--lr-decay-rate', '80',
     '--epochs', '50',
     '--batch-size', '5',
     '--train-size', '0.1',
