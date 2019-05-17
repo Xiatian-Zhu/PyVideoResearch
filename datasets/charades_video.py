@@ -6,6 +6,7 @@ from glob import glob
 from datasets.charades import Charades
 from datasets.utils import default_loader
 import datasets.video_transforms as videotransforms
+from misc_utils.utils import AverageMeter, Timer
 
 
 class CharadesVideo(Charades):
@@ -40,6 +41,8 @@ class CharadesVideo(Charades):
         return {'datas': datas, 'split': split}
 
     def get_item(self, index, shift=None):
+        # ============ Temp ===================
+        timer = Timer()
         ims, tars, meta = [], [], {}
         meta['do_not_collate'] = True
         fps = 24
@@ -57,12 +60,20 @@ class CharadesVideo(Charades):
             path = '{}{:06d}.jpg'.format(self.data['datas'][index]['base'], ii+1)
             try:
                 img = default_loader(path)
+                # ============ Temp ===================
+                load_img_cost = timer.thetime() - timer.end
+                timer.tick()
+                print('Load image from disk: {0:.3f}'.format(load_img_cost))
             except Exception as e:
                 print('failed to load image {}'.format(path))
                 print(e)
                 raise
             img = resize(img)
             img = transforms.ToTensor()(img)
+            # ============ Temp ===================
+            totensor_cost = timer.thetime() - timer.end
+            timer.tick()
+            print('To tensor cost: {0:.3f}'.format(totensor_cost))
             #img = 2*img - 1
             img = normalize(img)
             ims.append(img)
@@ -77,6 +88,10 @@ class CharadesVideo(Charades):
         target = torch.stack(tars)
         if self.transform is not None:
             img = self.transform(img)
+            # ============ Temp ===================
+            transform_cost = timer.thetime() - timer.end
+            timer.tick()
+            print('Transform cost: {0:.3f}'.format(transform_cost))
         if self.target_transform is not None:
             target = self.target_transform(target)
         # batch will be b x n x h x w x c
