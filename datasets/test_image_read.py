@@ -1,6 +1,6 @@
 """ Video loader for the Charades dataset """
 
-from datasets.utils import default_loader
+from datasets import utils
 from misc_utils.utils import Timer
 
 
@@ -12,7 +12,7 @@ for i in range(10):
     try:
         # ============ Temp ===================
         timer = Timer()
-        img = default_loader(path)
+        img = utils.default_loader(path)
         # ============ Temp ===================
         load_img_cost = timer.thetime() - timer.end
         timer.tic()
