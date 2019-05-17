@@ -62,7 +62,7 @@ class CharadesVideo(Charades):
                 img = default_loader(path)
                 # ============ Temp ===================
                 load_img_cost = timer.thetime() - timer.end
-                timer.tick()
+                timer.tic()
                 print('Load image from disk: {0:.3f}'.format(load_img_cost))
             except Exception as e:
                 print('failed to load image {}'.format(path))
@@ -72,7 +72,7 @@ class CharadesVideo(Charades):
             img = transforms.ToTensor()(img)
             # ============ Temp ===================
             totensor_cost = timer.thetime() - timer.end
-            timer.tick()
+            timer.tic()
             print('To tensor cost: {0:.3f}'.format(totensor_cost))
             #img = 2*img - 1
             img = normalize(img)
@@ -90,7 +90,7 @@ class CharadesVideo(Charades):
             img = self.transform(img)
             # ============ Temp ===================
             transform_cost = timer.thetime() - timer.end
-            timer.tick()
+            timer.tic()
             print('Transform cost: {0:.3f}'.format(transform_cost))
         if self.target_transform is not None:
             target = self.target_transform(target)
