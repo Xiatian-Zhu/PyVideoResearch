@@ -1,12 +1,7 @@
 """ Video loader for the Charades dataset """
-import torch
-import torchvision.transforms as transforms
-import numpy as np
-from glob import glob
-from datasets.charades import Charades
+
 from datasets.utils import default_loader
-import datasets.video_transforms as videotransforms
-from misc_utils.utils import AverageMeter, Timer
+from misc_utils.utils import Timer
 
 
 
