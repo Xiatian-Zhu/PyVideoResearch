@@ -41,8 +41,6 @@ class CharadesVideo(Charades):
         return {'datas': datas, 'split': split}
 
     def get_item(self, index, shift=None):
-        # ============ Temp ===================
-        timer = Timer()
         ims, tars, meta = [], [], {}
         meta['do_not_collate'] = True
         fps = 24
@@ -59,6 +57,8 @@ class CharadesVideo(Charades):
             ii = int(np.floor(loc))
             path = '{}{:06d}.jpg'.format(self.data['datas'][index]['base'], ii+1)
             try:
+                # ============ Temp ===================
+                timer = Timer()
                 img = default_loader(path)
                 # ============ Temp ===================
                 load_img_cost = timer.thetime() - timer.end
@@ -71,9 +71,9 @@ class CharadesVideo(Charades):
             img = resize(img)
             img = transforms.ToTensor()(img)
             # ============ Temp ===================
-            totensor_cost = timer.thetime() - timer.end
-            timer.tic()
-            print('From PIL to tensor: {0:.3f} sec'.format(totensor_cost))
+            # totensor_cost = timer.thetime() - timer.end
+            # timer.tic()
+            # print('From PIL to tensor: {0:.3f} sec'.format(totensor_cost))
             #img = 2*img - 1
             img = normalize(img)
             ims.append(img)
@@ -89,9 +89,9 @@ class CharadesVideo(Charades):
         if self.transform is not None:
             img = self.transform(img)
             # ============ Temp ===================
-            transform_cost = timer.thetime() - timer.end
-            timer.tic()
-            print('Image transform per mini-batch: {0:.3f} sec'.format(transform_cost))
+            # transform_cost = timer.thetime() - timer.end
+            # timer.tic()
+            # print('Image transform per mini-batch: {0:.3f} sec'.format(transform_cost))
         if self.target_transform is not None:
             target = self.target_transform(target)
         # batch will be b x n x h x w x c
