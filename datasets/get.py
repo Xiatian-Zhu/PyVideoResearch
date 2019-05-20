@@ -66,7 +66,7 @@ def get_dataset(args, splits=('train', 'val'), dataset=None):
 
     if 'val_video' in splits:
         valvideo_loader = torch.utils.data.DataLoader(
-            valvideo_dataset, batch_size=1, shuffle=False, collate_fn=cat_collate,
+            valvideo_dataset, batch_size=args.batch_size, shuffle=False, collate_fn=cat_collate,
             num_workers=args.workers, pin_memory=False)
         returns.append(valvideo_loader)
 
