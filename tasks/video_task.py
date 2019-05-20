@@ -3,6 +3,7 @@ from torch.nn.parallel.scatter_gather import gather
 from metrics.get import get_metrics
 from datasets.get import get_dataset
 from tasks.task import Task
+from train import part
 
 
 class VideoTask(Task):
@@ -26,7 +27,7 @@ class VideoTask(Task):
         model.eval()
         criterion.eval()
 
-        for i, (input, target, meta) in enumerate(loader):
+        for i, (input, target, meta) in enumerate(part(loader, args.val_size)):
             if not args.cpu:
                 input = input.cuda()
                 target = target.cuda(async=True)
@@ -52,10 +53,11 @@ class VideoTask(Task):
             # ids.append(meta['id'][0])
             timer.tic()
             if i % args.print_freq == 0:
-                print('[{name}] {task}: [{0}/{1}]\t'
+                print('[{name}] {task}: [{0}/{1}({2})]\t'
                       'Time {timer.val:.3f} ({timer.avg:.3f})\t'
                       '{metrics}'.format(
-                          i, len(loader), timer=timer, name=args.name, task=self.name,
+                          i, int(len(loader)*args.val_size), len(loader),
+                          timer=timer, name=args.name, task=self.name,
                           metrics=' \t'.join(str(m) for m in metrics)))
             del loss, output, target  # make sure we don't hold on to the graph
         submission_file(
