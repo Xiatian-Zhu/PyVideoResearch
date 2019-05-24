@@ -27,16 +27,15 @@ def rmv_space(target_dir):
 
 
 # target_dir = '/home/nfs/xiatian.zhu/datasets/Kinetics400/train/'
-# target_dir = '/home/SERILOCAL/x.chang/Datasets/Kinetics400/train/'
+target_dir = '/home/SERILOCAL/x.chang/Datasets/Kinetics400/train/'
 # rmv_space(target_dir)
 
-target_dir = '/home/nfs/xiatian.zhu/datasets/Kinetics400/val/'
-# target_dir = '/home/SERILOCAL/x.chang/Datasets/Kinetics400/val/'
+# target_dir = '/home/nfs/xiatian.zhu/datasets/Kinetics400/val/'
+target_dir = '/home/SERILOCAL/x.chang/Datasets/Kinetics400/val/'
 rmv_space(target_dir)
 
 # target_dir = '/home/nfs/xiatian.zhu/datasets/Kinetics400/test/'
-# target_dir = '/home/SERILOCAL/x.chang/Datasets/Kinetics400/test/'
-# rmv_space(target_dir)
+target_dir = '/home/SERILOCAL/x.chang/Datasets/Kinetics400/test/'
+rmv_space(target_dir)
 
-# onlyfiles = [f for f in listdir(target_dir) if isfile(join(mypath, f))]
 
