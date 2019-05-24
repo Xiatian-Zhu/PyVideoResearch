@@ -9,10 +9,14 @@
 target_dir = '/home/SERILOCAL/x.chang/Datasets/Kinetics400/train/'
 
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile, join, isdir
 
 for f in listdir(target_dir):
-    print(f)
+    if isdir(join(target_dir, f)):
+        print(f)
+        f = f.replace(' ', '_')
+        print(f)
+
 
 # onlyfiles = [f for f in listdir(target_dir) if isfile(join(mypath, f))]
 
