@@ -20,8 +20,7 @@ class Kineticsmp4(Kinetics):
     def _get_video_path(self, path, vid, label):
         if not hasattr(self, 'int2cls'):
             self.int2cls = dict([(y, x) for x, y in self.cls2int.items()])
-        # name = self.int2cls[label['class']].replace(' ', '_')
-        name = self.int2cls[label['class']].replace(' ', '\ ')
+        name = self.int2cls[label['class']].replace(' ', '_')
         iddir = '{}/{}/{}_{:06d}_{:06d}.mp4'.format(
             path, name, vid, label['start'], label['end'])
         return iddir
