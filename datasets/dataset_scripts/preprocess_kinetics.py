@@ -28,7 +28,7 @@ def rmv_space(target_dir):
 
 # target_dir = '/home/nfs/xiatian.zhu/datasets/Kinetics400/train/'
 target_dir = '/home/SERILOCAL/x.chang/Datasets/Kinetics400/train/'
-# rmv_space(target_dir)
+rmv_space(target_dir)
 
 # target_dir = '/home/nfs/xiatian.zhu/datasets/Kinetics400/val/'
 target_dir = '/home/SERILOCAL/x.chang/Datasets/Kinetics400/val/'
