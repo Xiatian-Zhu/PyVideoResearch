@@ -17,7 +17,7 @@ for f in listdir(target_dir):
         fa = f.replace(' ', '_')
         print('After: {0}'.format(fa))
 
-        rename(f, fa)
+        rename(join(target_dir, f), join(target_dir, fa))
 
         if isdir(join(target_dir, fa)) and not isfile(f):
             print('Rename done: {0}'.format(fa))
