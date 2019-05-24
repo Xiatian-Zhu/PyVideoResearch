@@ -13,9 +13,9 @@ from os.path import isfile, join, isdir
 
 for f in listdir(target_dir):
     if isdir(join(target_dir, f)):
-        print(f)
+        print('Before: {0}'.format(f))
         f = f.replace(' ', '_')
-        print(f)
+        print('After: {0}\n'.format(f))
 
 
 # onlyfiles = [f for f in listdir(target_dir) if isfile(join(mypath, f))]
