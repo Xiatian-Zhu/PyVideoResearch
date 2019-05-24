@@ -6,7 +6,7 @@
 # Usage: ./download_kinetics_trim.py outdir/ csvfile.csv
 
 
-target_dir = '/home/SERILOCAL/x.chang/Datasets/Kinetics400/train/test/'
+target_dir = '/home/SERILOCAL/x.chang/Datasets/Kinetics400/test_rename/'
 
 from os import listdir, rename
 from os.path import isfile, join, isdir
