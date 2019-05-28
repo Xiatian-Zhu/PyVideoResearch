@@ -17,8 +17,9 @@ def read_multi_images(target_dir):
     timer = Timer()
 
     for f in listdir(target_dir):
-        if isfile(join(target_dir, f)):
-            read_one_iamge(f)
+        file_full_path = join(target_dir, f)
+        if isfile(file_full_path):
+            read_one_iamge(file_full_path)
 
     time_cost = timer.thetime() - timer.end
     print('Load images from disk: {0:.3f} sec'.format(time_cost))
