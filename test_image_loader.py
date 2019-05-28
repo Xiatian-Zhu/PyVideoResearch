@@ -35,7 +35,7 @@ torchvision.set_image_backend('accimage')
 print('========== Image backend: {0}'.format(get_image_backend()))
 time_cost_acc, image_num_acc = read_multi_images(target_dir)
 
-print('Speedup by accimage: {0}/{1} ({2/3})',format(time_cost_pil, time_cost_acc, image_num_pil, image_num_acc))
+print('Speedup by accimage: {0}/{1} ({2}/{3})',format(time_cost_pil, time_cost_acc, image_num_pil, image_num_acc))
 
 
 
