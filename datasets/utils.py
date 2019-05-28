@@ -135,6 +135,7 @@ def default_loader(path):
         print('using accimage bakcend')
         return accimage_loader(path)
     else:
+        print('using PIL')
         return pil_loader(path)
 
 
