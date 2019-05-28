@@ -23,15 +23,18 @@ def read_multi_images(target_dir):
 
     time_cost = timer.thetime() - timer.end
     print('Load images from disk: {0:.3f} sec'.format(time_cost))
+    return time_cost
 
 
 print('========== Image backend: {0}'.format(get_image_backend()))
 target_dir = '/home/nfs/x.chang/Datasets/Kinetics400/train_frms/lunge/Ku56XQb3N40_000004_000014/'
-read_multi_images(target_dir)
+time_cost_pil = read_multi_images(target_dir)
 
 torchvision.set_image_backend('accimage')
 print('========== Image backend: {0}'.format(get_image_backend()))
-read_multi_images(target_dir)
+time_cost_acc = read_multi_images(target_dir)
+
+print('Speedup by accimage: {time_cost_pil}/{time_cost_acc}')
 
 
 
