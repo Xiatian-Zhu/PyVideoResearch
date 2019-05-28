@@ -132,10 +132,8 @@ def opencv_loader(path):
 def default_loader(path):
     from torchvision import get_image_backend
     if get_image_backend() == 'accimage':
-        print('using accimage bakcend')
         return accimage_loader(path)
     else:
-        print('using PIL')
         return pil_loader(path)
 
 
