@@ -7,6 +7,12 @@ from os import listdir, rename
 from os.path import isfile, join, isdir
 
 
+#######################################################################
+def read_one_iamge(path):
+    # path = '/home/nfs/x.chang/Datasets/Kinetics400/train_frms/lunge/Ku56XQb3N40_000004_000014/00000000.jpg'
+    return default_loader(path)
+
+
 def read_multi_images(target_dir):
     timer = Timer()
 
@@ -28,10 +34,7 @@ read_multi_images(target_dir)
 
 
 
-#######################################################################
-def read_one_iamge(path):
-    # path = '/home/nfs/x.chang/Datasets/Kinetics400/train_frms/lunge/Ku56XQb3N40_000004_000014/00000000.jpg'
-    return default_loader(path)
+
 
 
 
