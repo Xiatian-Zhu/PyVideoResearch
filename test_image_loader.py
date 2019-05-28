@@ -24,7 +24,7 @@ def read_multi_images(target_dir):
 
     time_cost = timer.thetime() - timer.end
     print('Load images from disk: {0:.3f} sec'.format(time_cost))
-    return time_cost,
+    return time_cost, image_num
 
 
 print('========== Image backend: {0}'.format(get_image_backend()))
